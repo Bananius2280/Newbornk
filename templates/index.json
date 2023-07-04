@@ -1,0 +1,226 @@
+{
+  "sections": {
+    "1630994380770cb550": {
+      "type": "slideshow",
+      "blocks": {
+        "1630994380b1b22eeb-2": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/DTF_ad7c0be7-9334-4c0b-9322-f3533280d1d4.jpg",
+            "image_phone": "shopify:\/\/shop_images\/Ban_jan22_sale_mob_aefb064e-a006-46b1-aaaa-24b4a59854ce.jpg",
+            "banner_link": "shopify:\/\/collections\/sale",
+            "language": "UK"
+          }
+        },
+        "1630994380b1b22eeb-1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Ban_gram_ukr_desk.jpg",
+            "image_phone": "shopify:\/\/shop_images\/Ban_gram_ukr_mob.jpg",
+            "banner_link": "shopify:\/\/collections\/gramicci",
+            "language": "UK"
+          }
+        },
+        "22a50905-f3ab-4163-8763-bbc28328aa48": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/BAN_UY_1_7e1e6454-f954-486d-9e5e-6ad7c1393bbe.jpg",
+            "image_phone": "shopify:\/\/shop_images\/BAN_UY_2_9193210a-adac-4e4c-97c3-635a31f60157.jpg",
+            "banner_link": "shopify:\/\/collections\/uystudio",
+            "language": "UK"
+          }
+        },
+        "ce6d2dc3-91a2-4167-94e4-935de9a1b462": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Frame_714.jpg",
+            "image_phone": "shopify:\/\/shop_images\/Frame_707.jpg",
+            "banner_link": "shopify:\/\/collections\/asics",
+            "language": "UK"
+          }
+        },
+        "7b7d3efa-43a7-4e95-a5e3-f5208d21b021": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Frame_690.jpg",
+            "image_phone": "shopify:\/\/shop_images\/Frame_691.jpg",
+            "banner_link": "shopify:\/\/collections\/sale",
+            "language": "UK"
+          }
+        },
+        "efa7cb34-67c3-400f-92ad-b155add48ebb": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Ban_jan22_sale_desk_5975f6b0-e50f-4fdb-8f1c-e76c9d6524db.jpg",
+            "image_phone": "shopify:\/\/shop_images\/Ban_jan22_sale_mob_a63e700d-51a2-4e08-9409-ed394eace0b2.jpg",
+            "banner_link": "shopify:\/\/collections",
+            "language": "UK"
+          }
+        },
+        "1630994380b1b22eeb-0": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Ban_jan22_sale_desk_97326da2-5a0b-4358-89b6-d3693568be3f.jpg",
+            "image_phone": "shopify:\/\/shop_images\/Ban_jan22_sale_mob_70f0064f-1004-4aa8-b086-89d9c9e68bdd.jpg",
+            "banner_link": "shopify:\/\/collections\/sale",
+            "language": "UK"
+          }
+        }
+      },
+      "block_order": [
+        "1630994380b1b22eeb-2",
+        "1630994380b1b22eeb-1",
+        "22a50905-f3ab-4163-8763-bbc28328aa48",
+        "ce6d2dc3-91a2-4167-94e4-935de9a1b462",
+        "7b7d3efa-43a7-4e95-a5e3-f5208d21b021",
+        "efa7cb34-67c3-400f-92ad-b155add48ebb",
+        "1630994380b1b22eeb-0"
+      ],
+      "settings": {
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "swipe_on_mobile": false
+      }
+    },
+    "image_banner": {
+      "type": "image-banner",
+      "disabled": true,
+      "settings": {
+        "image": "shopify:\/\/shop_images\/banner.png",
+        "desktop_text_box_position": "flex-end",
+        "color_scheme": "background-1",
+        "stack_images_on_mobile": true,
+        "adapt_height_first_image": false
+      }
+    },
+    "1626369903c393cced": {
+      "type": "featured-collection-slider",
+      "settings": {
+        "title": "нові надходження",
+        "collection": "new-arrivals",
+        "products_to_show": 6.5,
+        "products_to_show_mobile": 1.6,
+        "show_view_all": false,
+        "swipe_on_mobile": false,
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "add_image_padding": false,
+        "show_vendor": true,
+        "show_arrow": true,
+        "brand_collection": false
+      }
+    },
+    "1626416534da40dc37": {
+      "type": "collection-list",
+      "blocks": {
+        "1626416534da40dc37-0": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pokode"
+          }
+        },
+        "1626416534da40dc37-1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "white-sprut"
+          }
+        },
+        "1626416534da40dc37-2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "carhartt-wip"
+          }
+        }
+      },
+      "block_order": [
+        "1626416534da40dc37-0",
+        "1626416534da40dc37-1",
+        "1626416534da40dc37-2"
+      ],
+      "settings": {
+        "title": "",
+        "image_ratio": "adapt",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "button_overlay": true,
+        "swipe_on_mobile": false,
+        "image_padding": false,
+        "show_view_all": false
+      }
+    },
+    "1626416564a7b86704": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "РОЗПРОДАЖ",
+        "collection": "sale",
+        "full_width": true,
+        "products_to_show": 4,
+        "show_view_all": false,
+        "swipe_on_mobile": true,
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "add_image_padding": false,
+        "show_vendor": true,
+        "show_arrow": true
+      }
+    },
+    "1626450162f5dda00b": {
+      "type": "collection-list",
+      "blocks": {
+        "1626450162f5dda00b-0": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "helas"
+          }
+        },
+        "1626450162f5dda00b-1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mod44"
+          }
+        }
+      },
+      "block_order": [
+        "1626450162f5dda00b-0",
+        "1626450162f5dda00b-1"
+      ],
+      "settings": {
+        "title": "",
+        "image_ratio": "square",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "button_overlay": false,
+        "swipe_on_mobile": false,
+        "image_padding": false,
+        "show_view_all": false
+      }
+    },
+    "16264502060c7e1d80": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "LIFESTYLE",
+        "collection": "lifestyle",
+        "full_width": true,
+        "products_to_show": 4,
+        "show_view_all": false,
+        "swipe_on_mobile": true,
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "add_image_padding": false,
+        "show_vendor": true,
+        "show_arrow": true
+      }
+    }
+  },
+  "order": [
+    "1630994380770cb550",
+    "image_banner",
+    "1626369903c393cced",
+    "1626416534da40dc37",
+    "1626416564a7b86704",
+    "1626450162f5dda00b",
+    "16264502060c7e1d80"
+  ]
+}

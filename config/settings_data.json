@@ -1,0 +1,114 @@
+{
+  "current": {
+    "colors_accent_1": "#000000",
+    "colors_accent_2": "#ccf951",
+    "colors_text": "#000000",
+    "sale_badge_color_scheme": "sale-badge",
+    "predictive_search_enabled": true,
+    "predictive_search_show_vendor": false,
+    "predictive_search_show_price": false,
+    "language_switcher_enabled": true,
+    "language_switcher_position": "bottom-right",
+    "checkout_logo_image": "shopify:\/\/shop_images\/newborn_logo.png",
+    "checkout_accent_color": "#000000",
+    "checkout_button_color": "#ccf951",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "blocks": {
+          "announcement-bar-0": {
+            "type": "announcement",
+            "settings": {
+              "text": "Безкоштовна Доставка від 8000 грн.",
+              "color_scheme": "accent-2",
+              "text_color": "#000000",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "announcement-bar-0"
+        ],
+        "settings": {
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/newborn_logo.png",
+          "logo_width": 130,
+          "logo_position": "middle-left",
+          "menu_position": "center",
+          "menu": "main-menu",
+          "menu_mobile": "mobile-menu",
+          "show_line_separator": false,
+          "show_search": true
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "link_list",
+            "settings": {
+              "heading": "",
+              "menu": "footer-top"
+            }
+          },
+          "ee7af1e9-f8b8-44ba-89df-42007ca9a2df": {
+            "type": "link_list",
+            "settings": {
+              "heading": "",
+              "menu": "footer-social"
+            }
+          },
+          "e7003153-6cde-4572-9831-cb6cf1415d7c": {
+            "type": "logo",
+            "settings": {
+              "logo": "shopify:\/\/shop_images\/footer_logo.png"
+            }
+          },
+          "e748077d-4503-4060-8448-791035314aae": {
+            "type": "newsletter",
+            "settings": {
+            }
+          },
+          "13e033f9-23dc-4fdc-a7c7-ec12ffcbc1ea": {
+            "type": "link_list",
+            "settings": {
+              "heading": "",
+              "menu": "footer-policy"
+            }
+          }
+        },
+        "block_order": [
+          "footer-0",
+          "ee7af1e9-f8b8-44ba-89df-42007ca9a2df",
+          "e7003153-6cde-4572-9831-cb6cf1415d7c",
+          "e748077d-4503-4060-8448-791035314aae",
+          "13e033f9-23dc-4fdc-a7c7-ec12ffcbc1ea"
+        ],
+        "settings": {
+          "color_scheme": "accent-1",
+          "newsletter_enable": true,
+          "newsletter_heading": "Підписатися на розсилку",
+          "show_social": false,
+          "enable_country_selector": true,
+          "enable_language_selector": false,
+          "payment_enable": true
+        }
+      }
+    },
+    "content_for_index": [
+
+    ],
+    "blocks": {
+      "12793297677437526120": {
+        "type": "shopify:\/\/apps\/content-translation\/blocks\/custom_translations\/b5b83690-efd4-434d-8c6a-a5cef4019faf",
+        "disabled": false,
+        "settings": {
+        }
+      }
+    }
+  }
+}

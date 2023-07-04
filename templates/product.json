@@ -1,0 +1,182 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "subtitle": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.descriptors.subtitle.value }}",
+            "text_style": "subtitle"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "dropdown"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "cf442759-f444-4b42-9fc6-00597fe88231": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Інформація",
+            "content": "",
+            "page": "",
+            "liquid": "{{ product.description }}",
+            "icon": "none"
+          }
+        },
+        "58772005-ffce-40ba-8987-901c185f3569": {
+          "type": "size_guide",
+          "settings": {
+            "show_size_popup": true
+          }
+        },
+        "fb04cf8f-a9cf-4800-9185-a5394e71424e": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Доставка",
+            "content": "<p>Доставка замовлень на сумми більше 8000 грн є <strong>безкоштовною <\/strong>і здійснюється протягом двох днів з моменту оформлення. Два дні — це максимальний термін, адже ми докладаємо зусиль, аби доставити ваше замовлення якомога швидше. <br\/><br\/>Доставка по Києву та до інших міст України здійснюється за допомогою сервісу «Нова Пошта». <br\/><br\/>Доставку по Києву також можна здійснити кур’єром — вартість залежить від адреси доставки й тарифів кур'єрської служби. Узгодити деталі кур’єрської доставки по Києву можна в розмові з менеджером. <\/p>",
+            "page": "",
+            "liquid": "{% render 'pickup' %}",
+            "icon": "none"
+          }
+        },
+        "description": {
+          "type": "description",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "70bbe489-815e-4f89-aaee-8f79b7917887": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "ІНФОРМАЦІЯ",
+            "content": "<p>{{ product.metafields.product_fields.information | metafield_tag }}<\/p>",
+            "page": "",
+            "liquid": "",
+            "icon": "none"
+          }
+        },
+        "c1df5e55-1f87-4887-9282-ab39f4ff2c07": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "РОЗМІРНА СІТКА",
+            "content": "<p>{{ product.metafields.my_fields.size_quide_text | metafield_tag }}<\/p>",
+            "page": "",
+            "liquid": "",
+            "icon": "none"
+          }
+        },
+        "share": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "subtitle",
+        "price",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "cf442759-f444-4b42-9fc6-00597fe88231",
+        "58772005-ffce-40ba-8987-901c185f3569",
+        "fb04cf8f-a9cf-4800-9185-a5394e71424e",
+        "description",
+        "70bbe489-815e-4f89-aaee-8f79b7917887",
+        "c1df5e55-1f87-4887-9282-ab39f4ff2c07",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "enable_video_looping": false
+      }
+    },
+    "16323088197825d104": {
+      "type": "featured-collection-slider",
+      "disabled": true,
+      "settings": {
+        "title": "ВАМ МОЖЕ СПОДОБАТИСЬ",
+        "collection": "frontpage",
+        "products_to_show": 6,
+        "products_to_show_mobile": 1.5,
+        "show_view_all": false,
+        "swipe_on_mobile": false,
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "add_image_padding": false,
+        "show_vendor": true,
+        "show_arrow": true,
+        "brand_collection": false
+      }
+    },
+    "1627050417092b6041": {
+      "type": "featured-collection-slider",
+      "settings": {
+        "title": "{{ product.vendor }}",
+        "collection": "salomon",
+        "products_to_show": 6,
+        "products_to_show_mobile": 1.5,
+        "show_view_all": false,
+        "swipe_on_mobile": false,
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "add_image_padding": false,
+        "show_vendor": true,
+        "show_arrow": true,
+        "brand_collection": true
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "ВАМ МОЖЕ СПОДОБАТИСЬ",
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "add_image_padding": true,
+        "show_vendor": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16323088197825d104",
+    "1627050417092b6041",
+    "product-recommendations"
+  ]
+}
