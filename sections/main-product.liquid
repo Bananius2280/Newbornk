@@ -212,14 +212,18 @@
           {%- when 'text' -%}
         
             {%- if product.metafields.brand.handle == blank -%}
-              <p class="product__text{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}">
-                {{- block.settings.text -}}
+              <p class="product__text{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}">               
+                {%- for product_vendor in shop.vendors -%}
+                  {% if product_vendor == block.settings.text %}
+                    {{ product_vendor | link_to_vendor: class: 'product__link' }}
+                  {% endif %}
+                {%- endfor -%}
               </p>
             {%- else -%}
               {%- assign handle = product.metafields.brand.handle | downcase -%}
               <p class="product__text{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}">
                 <a class='product__link' href='{{- collections[handle].url -}}'>{{- block.settings.text -}}</a>
-              </p>
+              </p> 
             {%- endif -%}
         
           {%- when 'title' -%}
