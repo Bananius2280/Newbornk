@@ -586,7 +586,8 @@ if(!window.initVar){
     }
   };
   window.addEventListener('click', function (e) {
-    if (e && e.path && !e.path.some(x => x.className && x.className.includes && x.className.includes('modal-container'))) {
+    if ((e && e.path && !e.path.some(x => x.className && x.className.includes && x.className.includes('modal-container'))) ||
+      (e && !e.path && e.target.tagName==="HTML")) {
       if (parent.initVar.closeCampaignPopUpOnOutSideClick)
         window.growCampaignPopUp.closeModal()
     }
@@ -608,7 +609,19 @@ if(!window.initVar){
       subscribedText: "Ми повідомимо вас, коли ціна зменшиться",
       modalHtml: `{priceDropModalHtml}`
     },
-    customJs: `initVar.addStockFulfilledButtonV2Enabled = true;`,
+    customJs: `initVar.addStockFulfilledButtonV2Enabled = true;
+
+initVar.checkIfInStock= (variant, product)=>{
+let doNotShowTagExist=product.tags && product.tags.some(x=>x.toLowerCase()==="crbt-bs-hide");
+console.log("Grow DoNotShowTag exist",doNotShowTagExist);
+if(doNotShowTagExist){
+return true;
+}
+ if (variant.available) {
+      return true;
+    }
+    return false;
+};`,
     customCss: `null`,
     dataVariantId: "data-variant-id",
     dataProductId: "data-product-id",
@@ -1484,7 +1497,7 @@ margin-top:15px;
       initVar.getValueIfExist(() => {
         fetch('https://www.cloudflare.com/cdn-cgi/trace', {method: "GET"}).then(async (res) => {
           let loc = await res.text();
-          initVar.defaultCountry = loc.split('\n').find(x => x.includes('loc')).split('=')[1].trim();
+          initVar.defaultCountry = loc &&loc.split('\n').find(x => x.includes('loc')).split('=')[1].trim();
         })
       })
 
