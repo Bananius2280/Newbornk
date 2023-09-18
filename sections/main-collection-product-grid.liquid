@@ -29,7 +29,7 @@
 
   <collection-filters-form class="facets small-hide">
 
-    <form id="CollectionSortingForm" class="facets__form">
+    <form id="CollectionSortingForm" class="facets__form facets__form-grid">
       {% if collection.current_vendor or collection.current_type %}
       <input type="hidden" name="q" value="{{ collection.current_vendor }}{{ collection.current_type }}">
       {% endif %}        

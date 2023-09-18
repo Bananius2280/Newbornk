@@ -6,9 +6,9 @@ body.template-collection {
   overflow-x: visible;
 }
 
-.header__inline-menu {
-  position: sticky;
-  top: 0;
+.collection-filters .header__inline-menu {
+  position: relative;
+  top: 0!important;
 }
 
 .collection-hero__title.h1, h1.collection-hero__title {
@@ -209,6 +209,7 @@ body.template-collection {
 
 .facets {
   display: block;
+  /* display: none; */
 }
 
 .facets__form {
@@ -219,6 +220,10 @@ body.template-collection {
   -ms-grid-rows: auto 2.5rem auto;
   grid-template-rows: auto auto;
   gap: 2.5rem 2rem;
+}
+
+.facets__form-grid {
+  display: unset;
 }
 
 .facets__form > *:nth-child(1) {

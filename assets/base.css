@@ -561,13 +561,13 @@ table:not([class]) th {
   }
 }
 
-@media screen and (min-width: 750px) and (max-width: 989px) {
+@media screen and (min-width: 749px) and (max-width: 990px) {
   .medium-hide {
     display: none !important;
   }
 }
 
-@media screen and (min-width: 990px) {
+@media screen and (min-width: 989px) {
   .large-up-hide {
     display: none !important;
   }
@@ -2210,6 +2210,13 @@ details[open] > .search-modal {
 details[open] > .search-modal {
   opacity: 1;
   animation: animateMenuOpen var(--duration-default) ease;
+}
+
+@media screen and (max-width:767px) {
+  details[open] > .search-modal {
+  background-color: unset; 
+  z-index: -1;
+  }
 }
 
 details[open] .modal-overlay {

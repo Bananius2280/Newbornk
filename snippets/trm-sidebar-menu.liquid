@@ -1,4 +1,4 @@
-{%- if collection.title != 'SALE' -%}
+
 <nav class="header__inline-menu" {%- if section.settings.menu_position == 'center' -%} style="margin: auto;"  {%- endif -%}>
     <ul class="list-menu list-menu--inline sidebar-menu" role="list">
       {%- for link in section.settings.menu_sidebar.links -%}
@@ -174,6 +174,20 @@
               {% render 'icon-caret' %}
             </summary>
               <ul class="header__submenu list-menu motion-reduce header-submenu__third--level">
+                {% assign ua_brands = '' %}
+                {%- for link in linklists.sidebar-menu.links -%}
+                  {%- unless link.title == 'Бренди' -%}
+                    {%- continue -%}
+                  {%- endunless -%}
+                  {% for sub_link in link.links -%}
+                    {% comment %} {{ sub_link.title }} {% endcomment %}
+                    {%- if sub_link.title contains ' 🇺🇦' -%}
+                      {%- assign cur_brand = sub_link.title | replace: ' 🇺🇦', '' -%}
+                      {%- assign ua_brands = ua_brands | append: cur_brand | append: '~' -%}
+                    {%- endif -%}
+                  {%- endfor %}
+                {%- endfor %}
+                {% assign ua_brands_array = ua_brands | split: '~' | sort %} 
                 {% assign sale_brands = '' %}
                 {% paginate sale_collection.products by 5000 %}
                   {% for p in sale_collection.products %}
@@ -187,7 +201,11 @@
                 {% for br in sale_brands_array %}
                   <li>
                     <a href="{{ sale_collection.url | append: '?filter.p.vendor=' | append: br }}" class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}" {% if childlink.current %}aria-current="page"{% endif %}>
-                      {{ br | escape }}
+                      {%- if ua_brands_array contains br -%}
+                        {{ br | append: ' 🇺🇦' | escape }}
+                      {%- else -%}
+                        {{ br | escape }}
+                      {%- endif -%}
                     </a>
                   </li>
                 {%- endfor %}
@@ -201,9 +219,9 @@
     </li>
     </ul>
   </nav>
-{%- endif -%}
 
-{%- if collection.title == 'SALE' -%}
+
+<!-- {%- if collection.title == 'SALE' -%}
   {% assign sale_collection = collections[collection.handle] %}
   {% assign cur_tags = sale_collection.all_tags %}
   {% assign col_tag = 'Чоловікам+Чоловіче,Жінкам+Жіноче,Аксесуари+Аксесуари,Взуття+Взуття,Lifestyle+Lifestyle' | split: ',' %}
@@ -325,6 +343,20 @@
                 </span>
               </summary>
               <ul class="header__submenu list-menu list-menu--disclosure caption-large motion-reduce" role="list" tabindex="-1">
+                {% assign ua_brands = '' %}
+                {%- for link in linklists.sidebar-menu.links -%}
+                  {%- unless link.title == 'Бренди' -%}
+                    {%- continue -%}
+                  {%- endunless -%}
+                  {% for sub_link in link.links -%}
+                    {% comment %} {{ sub_link.title }} {% endcomment %}
+                    {%- if sub_link.title contains ' 🇺🇦' -%}
+                      {%- assign cur_brand = sub_link.title | replace: ' 🇺🇦', '' -%}
+                      {%- assign ua_brands = ua_brands | append: cur_brand | append: '~' -%}
+                    {%- endif -%}
+                  {%- endfor %}
+                {%- endfor %}
+                {% assign ua_brands_array = ua_brands | split: '~' | sort %} 
                 {% assign sale_brands = '' %}
                 {% paginate sale_collection.products by 5000 %}
                   {% for p in sale_collection.products %}
@@ -338,7 +370,11 @@
                 {% for br in sale_brands_array %}
                   <li>
                     <a href="{{ sale_collection.url | append: '?filter.p.vendor=' | append: br }}" class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}" {% if childlink.current %}aria-current="page"{% endif %}>
-                      {{ br | escape }}
+                      {%- if ua_brands_array contains br -%}
+                        {{ br | append: ' 🇺🇦' | escape }}
+                      {%- else -%}
+                        {{ br | escape }}
+                      {%- endif -%}
                     </a>
                   </li>
                 {%- endfor %}
@@ -349,4 +385,4 @@
       {% endif %}
     </ul>
   </nav>
-{%- endif -%}
+{%- endif -%} -->

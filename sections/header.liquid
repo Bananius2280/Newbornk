@@ -348,12 +348,11 @@
               {% comment %}{% render 'icon-close' %}{% endcomment %}
             </span>
           </summary>
-
           <div id="menu-drawer" class="menu-drawer motion-reduce" tabindex="-1">
             <div class="menu-drawer__inner-container">
               <div class="menu-drawer__navigation-container">
-                {% if collection.title != 'SALE' %}
-                  <nav class="menu-drawer__navigation">
+
+                <nav class="menu-drawer__navigation">
                   <ul class="menu-drawer__menu list-menu" role="list">
                     {%- for link in section.settings.menu_mobile.links -%}
                       <li>
@@ -422,7 +421,7 @@
                         <li>
                       <details>
                           <summary class="menu-drawer__mobil--sale menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}">
-                            <a class="summary-link" href="{{ link.url }}">
+                            <a class="summary-link" href="/collections/sale">
                               <span class="menu-drawer__mobil--sale-span{%- if link.child_active %} header__active-menu-item{% endif %}">
                                 SALE
                               </span>
@@ -454,7 +453,7 @@
                       <li>
                         <details>
                           <summary class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}">
-                            <a class="summary-link" href="{{ link.url }}">
+                            <a class="summary-link" href="{% if ct_tag_collection == 'Чоловікам' %}/collections/sale/чоловіче{% elsif ct_tag_collection == 'Жінкам' %}/collections/sale/жіноче{% elsif ct_tag_collection == 'Аксесуари' %}/collections/sale/Аксесуари{% elsif ct_tag_collection == 'Взуття' %}/collections/sale/взуття{% elsif ct_tag_collection == 'Lifestyle' %}/collections/sale/lifestyle{% endif %}">
                               <span class="menu-drawer__mobil--sale-span__sun{%- if link.child_active %} header__active-menu-item{% endif %}">
                                 {{ ct_tag_collection | escape }}
                               </span>
@@ -557,7 +556,7 @@
                         {% comment %} Бренди {% endcomment %}
                         <details>
                           <summary class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}">
-                            <a class="summary-link" href="{{ link.url }}">
+                            <a class="summary-link" href="/collections/brands">
                               <span class="menu-drawer__mobil--sale-span__sun{%- if link.child_active %} header__active-menu-item{% endif %}">
                                 Бренди
                               </span>
@@ -572,6 +571,20 @@
                                   {{ link.title | escape }}
                                 </button>
                               <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                                {% assign ua_brands = '' %}
+                                {%- for link in linklists.sidebar-menu.links -%}
+                                  {%- unless link.title == 'Бренди' -%}
+                                    {%- continue -%}
+                                  {%- endunless -%}
+                                  {% for sub_link in link.links -%}
+                                    {% comment %} {{ sub_link.title }} {% endcomment %}
+                                    {%- if sub_link.title contains ' 🇺🇦' -%}
+                                      {%- assign cur_brand = sub_link.title | replace: ' 🇺🇦', '' -%}
+                                      {%- assign ua_brands = ua_brands | append: cur_brand | append: '~' -%}
+                                    {%- endif -%}
+                                  {%- endfor %}
+                                {%- endfor %}
+                                {% assign ua_brands_array = ua_brands | split: '~' | sort %} 
                                 {% assign sale_brands = '' %}
                                 {% paginate sale_collection.products by 5000 %}
                                   {% for p in sale_collection.products %}
@@ -585,7 +598,11 @@
                                 {% for br in sale_brands_array %}
                                   <li>
                                     <a href="{{ sale_collection.url | append: '?filter.p.vendor=' | append: br }}" class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>
-                                      {{ br | escape }}
+                                      {%- if ua_brands_array contains br -%}
+                                        {{ br | append: ' 🇺🇦' | escape }}
+                                      {%- else -%}
+                                        {{ br | escape }}
+                                      {%- endif -%}
                                     </a>
                                   </li>
                                 {%- endfor %}
@@ -605,9 +622,7 @@
                   </ul>
                 </nav>
 
-
-                {% endif %}
-                {% if collection.title == 'SALE' %}
+                <!-- {% if collection.title == 'SALE' %}
                   <nav class="menu-drawer__navigation">
                   <ul class="menu-drawer__menu list-menu" role="list">
                     {% assign sale_collection = collections[collection.handle] %}
@@ -627,7 +642,7 @@
                       <li>
                         <details>
                           <summary class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}">
-                            <a class="summary-link" href="{{ link.url }}">
+                            <a class="summary-link" href="{% if ct_tag_collection == 'Чоловікам' %}/collections/sale/чоловіче{% elsif ct_tag_collection == 'Жінкам' %}/collections/sale/жіноче{% elsif ct_tag_collection == 'Аксесуари' %}/collections/sale/Аксесуари{% elsif ct_tag_collection == 'Взуття' %}/collections/sale/взуття{% elsif ct_tag_collection == 'Lifestyle' %}/collections/sale/lifestyle{% endif %}">
                               <span {%- if link.child_active %}class="header__active-menu-item"{% endif %}>
                                 {{ ct_tag_collection | escape }}
                               </span>
@@ -731,7 +746,7 @@
                         {% comment %} Бренди {% endcomment %}
                         <details>
                           <summary class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}">
-                            <a class="summary-link" href="{{ link.url }}">
+                            <a class="summary-link" href="/collections/brands">
                               <span {%- if link.child_active %}class="header__active-menu-item"{% endif %}>
                                 Бренди
                               </span>
@@ -746,6 +761,20 @@
                                   {{ link.title | escape }}
                                 </button>
                               <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                                {% assign ua_brands = '' %}
+                                {%- for link in linklists.sidebar-menu.links -%}
+                                  {%- unless link.title == 'Бренди' -%}
+                                    {%- continue -%}
+                                  {%- endunless -%}
+                                  {% for sub_link in link.links -%}
+                                    {% comment %} {{ sub_link.title }} {% endcomment %}
+                                    {%- if sub_link.title contains ' 🇺🇦' -%}
+                                      {%- assign cur_brand = sub_link.title | replace: ' 🇺🇦', '' -%}
+                                      {%- assign ua_brands = ua_brands | append: cur_brand | append: '~' -%}
+                                    {%- endif -%}
+                                  {%- endfor %}
+                                {%- endfor %}
+                                {% assign ua_brands_array = ua_brands | split: '~' | sort %} 
                                 {% assign sale_brands = '' %}
                                 {% paginate sale_collection.products by 5000 %}
                                   {% for p in sale_collection.products %}
@@ -759,7 +788,11 @@
                                 {% for br in sale_brands_array %}
                                   <li>
                                     <a href="{{ sale_collection.url | append: '?filter.p.vendor=' | append: br }}" class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>
-                                      {{ br | escape }}
+                                      {%- if ua_brands_array contains br -%}
+                                        {{ br | append: ' 🇺🇦' | escape }}
+                                      {%- else -%}
+                                        {{ br | escape }}
+                                      {%- endif -%}
                                     </a>
                                   </li>
                                 {%- endfor %}
@@ -842,7 +875,7 @@
                     </li>
                   </ul>
                 </nav>
-                {% endif %}
+                {% endif %} -->
                 <div class="menu-drawer__utility-links">
                   {%- if shop.customer_accounts_enabled -%}
                     <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="menu-drawer__account link link--text focus-inset h5">
@@ -1120,7 +1153,7 @@
       <style>
         .trm-header .header__icon.header__icon--search .visually-hidden{
           padding:1.8rem 1.2rem;
-          margin-top: 1px;          
+          margin-top: 1px;       
         }
         @media (max-width:767px) {
           .trm-header .header__icon.header__icon--search.header__icon--account {
@@ -1131,7 +1164,16 @@
               display: flex;
               height: 100%;
           }
+
+          .trm-header .header__icon.header__icon--search .visually-hidden{     
+          display: block;
+        }
           
+        }
+        @media (max-width:750px) {
+          .trm-header .header__icon.header__icon--search .visually-hidden{     
+          display: none;
+        }
         }
       </style>
 
