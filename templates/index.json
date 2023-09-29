@@ -6,9 +6,18 @@
         "1630994380b1b22eeb-2": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/DTF_ad7c0be7-9334-4c0b-9322-f3533280d1d4.jpg",
-            "image_phone": "shopify:\/\/shop_images\/Ban_jan22_sale_mob_aefb064e-a006-46b1-aaaa-24b4a59854ce.jpg",
-            "banner_link": "shopify:\/\/collections\/sale",
+            "image": "shopify:\/\/shop_images\/DTF_e9f7cd19-251e-427e-baf4-a5505594e911.jpg",
+            "image_phone": "shopify:\/\/shop_images\/Ban_jan22_sale_mob_3c631e26-0a18-40e0-b0d3-04a864ecaf4b.jpg",
+            "banner_link": "shopify:\/\/collections\/new-arrivals",
+            "language": "UK"
+          }
+        },
+        "ce6d2dc3-91a2-4167-94e4-935de9a1b462": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/BAN_UY_1_ecf7e83e-1163-4483-ad96-44d37a77d834.jpg",
+            "image_phone": "shopify:\/\/shop_images\/Ban_gram_ukr_mob_d72b1f25-01d4-438d-8031-5b20c48075be.jpg",
+            "banner_link": "shopify:\/\/collections\/helas",
             "language": "UK"
           }
         },
@@ -23,19 +32,11 @@
         },
         "22a50905-f3ab-4163-8763-bbc28328aa48": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify:\/\/shop_images\/BAN_UY_1_7e1e6454-f954-486d-9e5e-6ad7c1393bbe.jpg",
             "image_phone": "shopify:\/\/shop_images\/BAN_UY_2_9193210a-adac-4e4c-97c3-635a31f60157.jpg",
             "banner_link": "shopify:\/\/collections\/uystudio",
-            "language": "UK"
-          }
-        },
-        "ce6d2dc3-91a2-4167-94e4-935de9a1b462": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Frame_714.jpg",
-            "image_phone": "shopify:\/\/shop_images\/Frame_707.jpg",
-            "banner_link": "shopify:\/\/collections\/asics",
             "language": "UK"
           }
         },
@@ -71,9 +72,9 @@
       },
       "block_order": [
         "1630994380b1b22eeb-2",
+        "ce6d2dc3-91a2-4167-94e4-935de9a1b462",
         "1630994380b1b22eeb-1",
         "22a50905-f3ab-4163-8763-bbc28328aa48",
-        "ce6d2dc3-91a2-4167-94e4-935de9a1b462",
         "7b7d3efa-43a7-4e95-a5e3-f5208d21b021",
         "efa7cb34-67c3-400f-92ad-b155add48ebb",
         "1630994380b1b22eeb-0"
@@ -118,19 +119,19 @@
         "1626416534da40dc37-0": {
           "type": "featured_collection",
           "settings": {
-            "collection": "pokode"
+            "collection": "thanks-london"
           }
         },
         "1626416534da40dc37-1": {
           "type": "featured_collection",
           "settings": {
-            "collection": "white-sprut"
+            "collection": "liquix"
           }
         },
         "1626416534da40dc37-2": {
           "type": "featured_collection",
           "settings": {
-            "collection": "carhartt-wip"
+            "collection": "dickies"
           }
         }
       },
@@ -172,13 +173,13 @@
         "1626450162f5dda00b-0": {
           "type": "featured_collection",
           "settings": {
-            "collection": "helas"
+            "collection": "gingin"
           }
         },
         "1626450162f5dda00b-1": {
           "type": "featured_collection",
           "settings": {
-            "collection": "mod44"
+            "collection": "eastpak"
           }
         }
       },

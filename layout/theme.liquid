@@ -15,16 +15,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
-    <link rel="canonical" href="{{ canonical_url }}">
+   
+    {% if template contains 'collection' %} <link rel="canonical" href="{{ shop.url }}{{ collection.url }}" /> {% else %} <link rel="canonical" href="{{ canonical_url }}" /> {% endif %} 
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
     <link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0578/7202/3712/files/favicon-16x16.png" sizes="16x16">
     <link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0578/7202/3712/files/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0578/7202/3712/files/favicon-48x48.png" sizes="48x48">
-    <link rel="alternate" hreflang="x-default" href="https://newbornk.com/" />
-    <link rel="alternate" hreflang="uk-UA" href="https://newbornk.com/" />
-    <link rel="alternate" hreflang="uk" href="https://newbornk.com/" />
-    <link rel="alternate" hreflang="en-UA" href="https://en.newbornk.com/" />
-    <link rel="alternate" hreflang="en" href="https://en.newbornk.com/" />
+    <link rel="alternate" hreflang="uk-UA" href="{{ canonical_url }}" />
   {%- unless settings.type_header_font.system? -%}
     <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
@@ -153,7 +150,13 @@
     
     <script src='{{ 'app.js' | asset_url }}' defer></script>
 
-{% render "geo" %}</head>
+{% render "geo" %}
+
+  <script src="{{ 'custom_h1_script.js' | asset_url }}"></script>
+   {% capture adoricsnippet %}{% include "adoric-apps-common" %}{% endcapture %}{% unless adoricsnippet contains "Liquid error" %}{{ adoricsnippet }}{% endunless %}
+   <meta name="google-site-verification" content="3lSZiF14Fa-u21OZGIXiMaguwBJgQnyzUqorK5vG9g0" />
+   <meta name="google-site-verification" content="cIoKTzCKehHrd-DQjxMORaLir9ukPggviWKS8Czw-Ho" />
+ </head>
 
   <body class="template-{{ request.page_type | handle }}">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">

@@ -18,7 +18,12 @@
       {%- if section.settings.show_collection_title -%}
       <h1 class="collection-hero__title">
         <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
-        {{- collection.title | escape -}}
+        {% if collection.title == 'SALE' and current_tags != blank %}
+        {%- capture tag_url -%}{{ collection.url }}/{{ current_tags | join: " "}}{%- endcapture -%}
+          Розпродаж: {{ current_tags | join: "  "}}
+        {% else %}
+          {{- collection.title | escape -}}
+        {% endif %}
       </h1>
       {%- endif -%}
 

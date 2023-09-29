@@ -9,7 +9,7 @@ class VariantSelects extends HTMLElement {
     this.updateMasterId();
     this.toggleAddButton(true, '', false);
     this.updatePickupAvailability();
-
+    this.pullOptions();
     if (!this.currentVariant) {
       this.toggleAddButton(true, '', true);
       this.setUnavailable();
@@ -19,6 +19,26 @@ class VariantSelects extends HTMLElement {
       this.updateVariantInput();
       this.renderProductInfo();
     }
+  }
+
+  pullOptions() {
+    document.querySelectorAll('variant-radios').forEach((variantRadios) => {
+      variantRadios.classList.add('loading-state');
+    });
+    setTimeout(function () {
+      fetch(window.location.href).then(function (response) {
+          return response.text();
+      }).then(function (html) {
+          let parser = new DOMParser();
+          let doc = parser.parseFromString(html, 'text/html');
+          document.querySelector('variant-radios').innerHTML = doc.querySelector('variant-radios').innerHTML;
+          document.querySelectorAll('variant-radios').forEach((variantRadios) => {
+            variantRadios.classList.remove('loading-state');
+          });
+      }).catch(function (err) {
+          console.warn('Something went wrong.', err);
+      })
+    }, 200);
   }
 
   updateOptions() {

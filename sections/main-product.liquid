@@ -213,7 +213,11 @@
         
             {%- if product.metafields.brand.handle == blank -%}
               <p class="product__text{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}">
-                {{- block.settings.text -}}
+                {%- for product_vendor in shop.vendors -%}
+                  {% if product_vendor == block.settings.text %}
+                    {{ product_vendor | link_to_vendor: class: 'product__link' }}
+                  {% endif %}
+                {%- endfor -%}
               </p>
             {%- else -%}
               {%- assign handle = product.metafields.brand.handle | downcase -%}
@@ -333,18 +337,58 @@
             {%- unless product.has_only_default_variant -%}
               {%- if block.settings.picker_type == 'button' -%}
                 <variant-radios class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}">
+
+                  
                   {%- for option in product.options_with_values -%}
+                    {%- liquid
+                      assign variants_available_arr = product.variants | map: 'available'
+                      assign variants_option1_arr = product.variants | map: 'option1'
+                      assign variants_option2_arr = product.variants | map: 'option2'
+                      assign variants_option3_arr = product.variants | map: 'option3'
+                    
+                      assign product_form_id = 'product-form-' | append: section.id
+                    -%}
                       <fieldset class="js product-form__input">
                         <legend class="form__label">{{ option.name }}</legend>
                         <span>{{ size_quide }}</span>
                         {%- for value in option.values -%}
+                          {%- liquid
+                            assign option_disabled = true
+                        
+                            for option1_name in variants_option1_arr
+                              case option.position
+                                when 1
+                                  if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                    assign option_disabled = false
+                                  endif
+                                when 2
+                                  if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                    assign option_disabled = false
+                                  endif
+                                when 3
+                                  if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == product.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                    assign option_disabled = false
+                                  endif
+                              endcase
+                            endfor
+                          -%}
                           <input type="radio" id="{{ section.id }}-{{ option.name }}-{{ forloop.index0 }}"
                                 name="{{ option.name }}"
                                 value="{{ value | escape }}"
                                 form="product-form-{{ section.id }}"
+                                {% if option_disabled %}
+                                  class="disabled"
+                                {% endif %}
                                 {% if option.selected_value == value %}checked{% endif %}
                           >
-                          <label for="{{ section.id }}-{{ option.name }}-{{ forloop.index0 }}">
+                          {%- assign file_extension = 'png' -%}
+                          {%- assign custom_swatch_image = value | handle | append: '.' | append: file_extension -%}
+                          {%- assign has_bg_image = false -%}
+                          {%- if images[custom_swatch_image] != blank -%}
+                            {%- assign has_bg_image = true -%}
+                            {%- assign bg_image = custom_swatch_image | file_url -%}
+                          {%- endif -%}
+                          <label {% if has_bg_image %}style="background-image: url('{{ bg_image }}')"{% endif %} class="{% if option_disabled %}disabled-label{% endif %} {% if has_bg_image %}label__swatch{% endif %}" for="{{ section.id }}-{{ option.name }}-{{ forloop.index0 }}">
                             {{ value }}
                           </label>
                         {%- endfor -%}

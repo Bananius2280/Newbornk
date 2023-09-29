@@ -84,7 +84,7 @@
             </span>
                         {%- elsif product_card_product.compare_at_price > product_card_product.price and product_card_product.available -%}
                             <span class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}" aria-hidden="true">
-              {{ 'products.product.on_sale' | t }}
+              {{ 'products.product.on_sale' | t }} {{ product_card_product.compare_at_price | minus: product_card_product.price | times: 100 | divided_by: product_card_product.compare_at_price }}%
             </span>
                         {%- endif -%}
                     </div>
@@ -153,7 +153,7 @@
             </span>
                         {%- elsif product_card_product.compare_at_price > product_card_product.price and product_card_product.available -%}
                             <span class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}" aria-hidden="true">
-              {{ 'products.product.on_sale' | t }}
+              {{ 'products.product.on_sale' | t }} {{ product_card_product.compare_at_price | minus: product_card_product.price | times: 100 | divided_by: product_card_product.compare_at_price }}%
             </span>
                         {%- endif -%}
                     </div>
