@@ -1101,7 +1101,7 @@ return true;
           await initVar.renderStockWidget(product, variant)
           await initVar.renderPriceDropWidget(product, variant)
           initVar.processingOnVariantChange = false;
-          console.log("Grow Variant Change title", variant.title)
+          console.log("Grow Variant Change title", variant.title);
           initVar.getValueIfExist(()=>initVar.afterVariantChangeFn())
           //alert("variant"+variant.id)
         }

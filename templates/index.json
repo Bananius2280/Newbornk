@@ -6,9 +6,9 @@
         "1630994380b1b22eeb-2": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/DTF_44a1812b-9b19-44c4-96b1-af98bc3493f1.jpg",
-            "image_phone": "shopify:\/\/shop_images\/Ban_jan22_sale_mob_ab0a22fc-fea2-44f2-94b0-6bddc2feb08a.jpg",
-            "banner_link": "shopify:\/\/collections\/sale",
+            "image": "shopify:\/\/shop_images\/DTF_e9f7cd19-251e-427e-baf4-a5505594e911.jpg",
+            "image_phone": "shopify:\/\/shop_images\/Ban_jan22_sale_mob_3c631e26-0a18-40e0-b0d3-04a864ecaf4b.jpg",
+            "banner_link": "shopify:\/\/collections\/new-arrivals",
             "language": "UK"
           }
         },
@@ -32,6 +32,7 @@
         },
         "22a50905-f3ab-4163-8763-bbc28328aa48": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify:\/\/shop_images\/BAN_UY_1_7e1e6454-f954-486d-9e5e-6ad7c1393bbe.jpg",
             "image_phone": "shopify:\/\/shop_images\/BAN_UY_2_9193210a-adac-4e4c-97c3-635a31f60157.jpg",
@@ -118,19 +119,19 @@
         "1626416534da40dc37-0": {
           "type": "featured_collection",
           "settings": {
-            "collection": "keep"
+            "collection": "thanks-london"
           }
         },
         "1626416534da40dc37-1": {
           "type": "featured_collection",
           "settings": {
-            "collection": "white-sprut"
+            "collection": "liquix"
           }
         },
         "1626416534da40dc37-2": {
           "type": "featured_collection",
           "settings": {
-            "collection": "ofourfour"
+            "collection": "dickies"
           }
         }
       },
@@ -172,13 +173,13 @@
         "1626450162f5dda00b-0": {
           "type": "featured_collection",
           "settings": {
-            "collection": "helas"
+            "collection": "gingin"
           }
         },
         "1626450162f5dda00b-1": {
           "type": "featured_collection",
           "settings": {
-            "collection": "mod44"
+            "collection": "eastpak"
           }
         }
       },

@@ -94,3 +94,12 @@ product-recommendations .price {
   color: inherit;
   text-decoration: none;
 }
+variant-radios{
+  transition: .2s all;
+}
+.loading-state{
+  transition: .2s all;
+  opacity: .7;
+  pointer-events: none;
+  cursor: wait;
+}
