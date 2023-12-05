@@ -8,7 +8,7 @@
     "pluginseo_pageTitleDefaultTemplate": "%% page_title %%",
     "pluginseo_pageTitleSearchTemplate": "%% search.terms %% at %% shop.name %%",
     "pluginseo_pageTitleProductTemplate": "ᐉ %% product.title %%%% product.selected_variant.title || prepend_not_empty: ' ' %% купити в Україні",
-    "pluginseo_pageTitleCollectionTemplate": "%% current_tags || join: ', ' || &nbsp; append_not_empty: ' ' %% %% collection.title || escape %% купити в Україні",
+    "pluginseo_pageTitleCollectionTemplate": "%% current_tags || join: ', ' || append_not_empty: ' ' %% %% collection.title || escape %% купити в Україні",
     "pluginseo_pageTitleCatalogTemplate": "%% current_tags || join: ', ' || append_not_empty: ' ' %% %% collection.title || escape %% купити в Україні",
     "pluginseo_pageTitle404Template": "404: Сторінку не знайдено - %% shop.name %%",
     "pluginseo_metaDescriptionTemplateApplyToAll": true,

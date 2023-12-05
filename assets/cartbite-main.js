@@ -572,6 +572,9 @@ if(!window.initVar){
           if (this.variants.length === 1 && this.variants[0].text.toLowerCase() === "default title") {
             return false
           }
+          if (this.variants.length === 0) {
+            return false
+          }
           return true
         },
         getDefaultCountry() {
@@ -952,7 +955,7 @@ return true;
       if (!variantId)
         variantId = parseInt(initVar.getQueryParam('variant'))
       if (!variantId) {
-        variantId = parseInt(ShopifyAnalytics && ShopifyAnalytics.meta && ShopifyAnalytics.meta.selectedVariantId)
+        variantId = parseInt(window.ShopifyAnalytics && window.ShopifyAnalytics.meta && window.ShopifyAnalytics.meta.selectedVariantId)
         let variant = product.variants.find(x => Number(x.id) === Number(variantId))
         if (!variant)
           variantId = null
@@ -1101,7 +1104,7 @@ return true;
           await initVar.renderStockWidget(product, variant)
           await initVar.renderPriceDropWidget(product, variant)
           initVar.processingOnVariantChange = false;
-          console.log("Grow Variant Change title", variant.title);
+          console.log("Grow Variant Change title", variant.title)
           initVar.getValueIfExist(()=>initVar.afterVariantChangeFn())
           //alert("variant"+variant.id)
         }
