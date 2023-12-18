@@ -22,12 +22,12 @@
   {%- if section.settings.enable_sorting -%}
   {%- assign total_active_values = 0 -%}
   
-	<div class='collection-filters__wrapper'>
+	<div class='collection-filters__wrapper collection-filters__wrapper--facets'>
   <div class='collection-filters__breadcrumbs'>
     {% render 'breadcrumbs' %}
   </div>
 
-  <collection-filters-form class="facets small-hide">
+  <collection-filters-form class="facets small-hide collection-filters__custom">
 
     <form id="CollectionSortingForm" class="facets__form facets__form-grid">
       {% if collection.current_vendor or collection.current_type %}
@@ -57,9 +57,9 @@
       </div>
     </form>
   </collection-filters-form>
-      
+
   </div>
-  <menu-drawer class="mobile-facets__wrapper">
+  {% comment %} <menu-drawer class="mobile-facets__wrapper">
     <details class="disclosure-has-popup medium-hide large-up-hide">
       <summary class="summary-first">
         <span class="mobile-facets__open">
@@ -76,7 +76,7 @@
             <div class="mobile-facets__header">
               <div class="mobile-facets__header-inner">
                 <!--h2 class="mobile-facets__heading">{{ 'sections.collection_template.sort_by_label' | t }}</h2-->
-                <p class="mobile-facets__count">{% comment %} {{ 'sections.collection_template.product_count' | t: product_count: collection.products_count, count: collection.all_products_count }}{% endcomment %}</p>
+                <p class="mobile-facets__count">{% comment %} {{ 'sections.collection_template.product_count' | t: product_count: collection.products_count, count: collection.all_products_count }}</p>{% endcomment %}
               </div>
             </div>
             <div class="mobile-facets__main">              
@@ -114,9 +114,13 @@
         </form>
       </collection-filters-form>
     </details>
-  </menu-drawer>
+  </menu-drawer> {% endcomment %}
 
-  <div class="active-facets active-facets-mobile">
+{% comment %} <collection-filters-form class="facets small-hide">
+  {% render 'facets', results: collection, enable_filtering: false, enable_sorting: true, collapse_on_larger_devices: false %}
+</collection-filters-form> {% endcomment %}
+
+  {% comment %} <div class="active-facets active-facets-mobile">
     <a href="{{ collection.url }}?sort_by={{ sort_by }}" class="active-facets__button button button--secondary js-facet-remove">{{ 'sections.collection_template.clear_all' | t }}</a>
     {%- for filter in collection.filters -%}
     {%- for value in filter.active_values -%}
@@ -135,10 +139,11 @@
     {%- endif -%}
     {% endif %}
     {%- endfor -%}
-  </div>
+  </div> {% endcomment %}
   {%- endif -%}
 </div>
-<div class="collection-filters filters-sidebar page-width" id="main-collection-filters" data-id="{{ section.id }}">
+
+<div class="collection-filters filters-sidebar collection-filters__mobile page-width" id="main-collection-filters" data-id="{{ section.id }}">
   {%- if section.settings.enable_menu -%}
   {% render 'trm-sidebar-menu' %}
   {% endif %}
@@ -299,14 +304,14 @@
   </form>
 </collection-filters-form>
 
-<menu-drawer class="ok mobile-facets__wrapper">
+<menu-drawer style="display: none;" class="ok mobile-facets__wrapper">
   <details class="disclosure-has-popup medium-hide large-up-hide">
     <summary class="summary-first">
       <span class="mobile-facets__open">
         <span>{{ 'sections.collection_template.filter_by_label' | t }}</span>
-        <span class="count-bubble">
+        {% comment %} <span class="count-bubble">
           {%- if total_active_values > 0 -%}{{ total_active_values }}{%- endif -%}
-        </span>
+        </span> {% endcomment %}
       </span>
       <span tabindex="0" class="mobile-facets__close mobile-facets__close--no-js">{%- render 'icon-close' -%}</span>
     </summary>
@@ -462,8 +467,13 @@
     </collection-filters-form>
   </details>
 </menu-drawer>
-
-<div class="active-facets active-facets-mobile">
+<div class="facets-button__box">
+  <div class="facets-button__open">Filter by</div>
+  <div class="facets-box">
+    {% render 'facets', results: collection, enable_filtering: false, enable_sorting: true, collapse_on_larger_devices: false %}
+  </div>
+</div>
+{% comment %} <div class="active-facets active-facets-mobile">
   <a href="{{ collection.url }}?sort_by={{ sort_by }}" class="active-facets__button button button--secondary js-facet-remove">{{ 'sections.collection_template.clear_all' | t }}</a>
   {%- for filter in collection.filters -%}
   {%- for value in filter.active_values -%}
@@ -482,7 +492,7 @@
   {%- endif -%}
   {% endif %}
   {%- endfor -%}
-</div>
+</div> {% endcomment %}
 {%- endif -%}
 </div>
 
@@ -638,7 +648,7 @@
 
 
 
-<script>
+ <script>
 
   const selectSingle = document.querySelector('.__select');
   const selectSingle_title = selectSingle.querySelector('.__select__title_content');
@@ -660,11 +670,62 @@
       selectSingle.setAttribute('data-state', '');
     });
   }
+
+
+document.querySelector('.facets-button__open').onclick = function() {
+
+let hhop = document.querySelectorAll('.header__inline-menu--mobile');
+hhop.forEach(pop => {
+  pop.classList.add('header__inline-menu--mobile-block');
+});
+
+document.querySelector('.facets-button__box').classList.add('facets-button__box--before');
+}
+
+document.querySelector('.facets-box__icon--close').onclick = function() {
+
+let hhop = document.querySelectorAll('.header__inline-menu--mobile');
+hhop.forEach(top => {
+  top.classList.remove('header__inline-menu--mobile-block');
+});
+
+document.querySelector('.facets-button__box').classList.remove('facets-button__box--before');
+}
+
+
+
+let sel_2 = document.querySelectorAll('.__select-all');
+sel_2.forEach(selectSingle => {
+    
+let sel_1 = document.querySelectorAll('.__select__title_content-all');
+sel_1.forEach(selectSingle_title => {
+
+  const selectSingle_labels = selectSingle.querySelectorAll('.__select__label');
+
+  // Toggle menu
+  selectSingle_title.addEventListener('click', () => {
+                                      if ('active' === selectSingle.getAttribute('data-state')) {
+    selectSingle.setAttribute('data-state', '');
+  } else {
+    selectSingle.setAttribute('data-state', 'active');
+  }
+  });
+
+  // Close when click to option
+  for (let i = 0; i < selectSingle_labels.length; i++) {
+    selectSingle_labels[i].addEventListener('click', (evt) => {
+      selectSingle_title.textContent = evt.target.textContent;
+      selectSingle.setAttribute('data-state', '');
+    });
+  }
+});
+});
+
 </script>
 {% schema %}
 {
 "name": "t:sections.main-collection-product-grid.name",
-"class": "spaced-section collection-grid-section section-with-sidebar",
+"class": "spaced-section collection-grid-section collection-grid-section-facets-mobile section-with-sidebar",
 "settings": [
 {
 "type": "range",

@@ -24,7 +24,7 @@
 
 <div class="facets-container">
   {%- unless collapse_on_larger_devices -%}
-    <facet-filters-form class="facets small-hide">
+    <facet-filters-form class="facets">
       <form id="FacetFiltersForm" class="facets__form">
 
         {%- if results.terms -%}
@@ -42,10 +42,16 @@
               {%- assign total_active_values = total_active_values | plus: filter.active_values.size -%}
               {% case filter.type %}
               {% when 'list' %}
-                <details class="disclosure-has-popup facets__disclosure js-filter" data-index="{{ forloop.index }}">
-                  <summary class="facets__summary caption-large focus-offset">
+                <details class="js-filter" data-index="{{ forloop.index }}">
+                  <summary class="header__menu-item list-menu__item link focus-inset filter-item__flex">
                     <div>
-                      <span>{{ filter.label | escape }}</span>
+                      {% if filter.label == 'Brand' %}
+                        <span>Бренди</span>
+                      {% elsif filter.label == 'Size' %}
+                        <span>Розмір</span>
+                      {% else %}
+                        <span>{{ filter.label | escape }}</span>
+                      {% endif %}
                       {% render 'icon-caret' %}
                     </div>
                   </summary>
@@ -58,10 +64,9 @@
                         </a>
                       </facet-remove>
                     </div>
-
-                    <ul class="facets__list list-unstyled" role="list">
+                    <ul class="facets__list list-unstyled header__submenu list-menu motion-reduce header-submenu__third--level" role="list">
                       {%- for value in filter.values -%}
-                        <li class="list-menu__item facets__item">
+                        <li class="header__menu-item list-menu__item link link--text focus-inset caption-large">
                           <label for="Filter-{{ filter.label | escape }}-{{ forloop.index }}" class="facet-checkbox{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %}">
                             <input type="checkbox"
                               name="{{ value.param_name }}"
@@ -70,27 +75,8 @@
                               {% if value.active %}checked{% endif %}
                               {% if value.count == 0 and value.active == false %}disabled{% endif %}
                             >
-
-                            <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-                              <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
-                            </svg>
-
-                            <svg class="icon icon-checkmark"
-                              width="1.1rem"
-                              height="0.7rem"
-                              viewBox="0 0 11 7"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg">
-
-                              <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
-                                stroke="currentColor"
-                                stroke-width="1.75"
-                                stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            </svg>
-
-                            </svg>
                             {{ value.label | escape }} ({{ value.count }})
+                            <div class="icon icon-checkmark icon-checkmark__plus"> </div>
                           </label>
                         </li>
                       {%- endfor -%}
@@ -211,22 +197,29 @@
         {%- if enable_sorting -%}
           <div class="facet-filters sorting caption">
             <div class="facet-filters__field">
-              <label class="facet-filters__label caption-large" for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
-              <div class="select">
+              <div class="__select __select-all" data-state="">
+                <div class="__select__title" data-default="Option 0"><span class="__select__title_content __select__title_content-all">{{ 'sections.collection_template.sort_by_label' | t }}</span></div>
                 {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
-                <select name="sort_by" class="facet-filters__sort select__select caption-large" id="SortBy" aria-describedby="a11y-refresh-page-message">
+                <div name="sort_by" class="__select__content facet-filters__sort caption-large" id="SortBy" aria-describedby="a11y-refresh-page-message">
                   {%- for option in results.sort_options -%}
-                    <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
-                  {%- endfor -%}
-                </select>
-                {% render 'icon-caret' %}
-              </div>
+                    {% if option.name == 'Ціна, від низької до високої' %}
+                      <input id="{{ option.value }}" class="__select__input" type="radio" value="{{ option.value | escape }}" name="sort_by" {% if sort_by == option.value %}selected="selected" {% endif %}/>
+                      <label for="{{ option.value }}" class="__select__label"><span>{{ option.name | escape }}</span></label>
+                    {% elsif option.name == 'Ціна, від високої до низької' %}
+                      <input id="{{ option.value }}" class="__select__input" type="radio" value="{{ option.value | escape }}" name="sort_by" {% if sort_by == option.value %}selected="selected" {% endif %}/>
+                      <label for="{{ option.value }}" class="__select__label"><span>{{ option.name | escape }}</span></label>
+                    {% elsif option.name == 'Бестселери' %}
+                      <input id="{{ option.value }}" class="__select__input" type="radio" value="{{ option.value | escape }}" name="sort_by" {% if sort_by == option.value %}selected="selected" {% endif %}/>
+                      <label for="{{ option.value }}" class="__select__label"><span>{{ option.name | escape }}</span></label>
+                    {% elsif option.name == 'Дата, від нової до старої' %}
+                      <input id="{{ option.value }}" class="__select__input" type="radio" value="{{ option.value | escape }}" name="sort_by" {% if sort_by == option.value %}selected="selected" {% endif %}/>
+                      <label for="{{ option.value }}" class="__select__label"><span>{{ option.name | escape }}</span></label>
+                    {% endif %}
+                  {%- endfor -%} 
+                </div>
+              </div> 
             </div>
-
-            <noscript>
-              <button type="submit" class="facets__button-no-js button button--tertiary">{{ 'products.facets.sort_button' | t }}</button>
-            </noscript>
-          </div>
+          </div> 
         {%- endif -%}
 
         <div class="product-count light" role="status">
