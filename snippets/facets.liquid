@@ -75,8 +75,9 @@
                               {% if value.active %}checked{% endif %}
                               {% if value.count == 0 and value.active == false %}disabled{% endif %}
                             >
-                            {{ value.label | escape }} {% if filter.label != 'Бренди' %}({{ value.count }}){% endif %}
-                            <div class="icon icon-checkmark icon-checkmark__plus"> </div>
+                            <div class="facet-checkbox__title">{{ value.label | escape }}</div> {% if filter.label != 'Brand' %}<div class="facet-checkbox__title">({{ value.count }})</div>{% endif %}
+                            <div class="icon icon-checkmark icon-checkmark__plus"></div>
+                            <div class="facet-checkbox__background"></div>
                           </label>
                         </li>
                       {%- endfor -%}

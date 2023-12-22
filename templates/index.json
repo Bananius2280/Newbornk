@@ -3,6 +3,15 @@
     "1630994380770cb550": {
       "type": "slideshow",
       "blocks": {
+        "1630994380b1b22eeb-0": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/NEWBORN_2_1920x960_0000.png",
+            "image_phone": "shopify:\/\/shop_images\/NEWBORN_2_750x1070_0000.png",
+            "banner_link": "shopify:\/\/collections\/sale",
+            "language": "UK"
+          }
+        },
         "1630994380b1b22eeb-2": {
           "type": "slide",
           "settings": {
@@ -49,24 +58,15 @@
             "banner_link": "shopify:\/\/collections\/sale",
             "language": "UK"
           }
-        },
-        "1630994380b1b22eeb-0": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Ban_jan22_sale_desk_97326da2-5a0b-4358-89b6-d3693568be3f.jpg",
-            "image_phone": "shopify:\/\/shop_images\/Ban_jan22_sale_mob_70f0064f-1004-4aa8-b086-89d9c9e68bdd.jpg",
-            "banner_link": "shopify:\/\/collections\/sale",
-            "language": "UK"
-          }
         }
       },
       "block_order": [
+        "1630994380b1b22eeb-0",
         "1630994380b1b22eeb-2",
         "ce6d2dc3-91a2-4167-94e4-935de9a1b462",
         "1630994380b1b22eeb-1",
         "22a50905-f3ab-4163-8763-bbc28328aa48",
-        "7b7d3efa-43a7-4e95-a5e3-f5208d21b021",
-        "1630994380b1b22eeb-0"
+        "7b7d3efa-43a7-4e95-a5e3-f5208d21b021"
       ],
       "settings": {
         "image_width": "third",

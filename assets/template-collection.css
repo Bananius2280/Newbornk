@@ -1057,6 +1057,8 @@ input.mobile-facets__checkbox {
   font-weight: 300;
   font-family: Raleway;
   display: inline-block;
+  opacity: 0;
+  transition: all .3s ease-in-out,-webkit-transform .3s ease-in-out;
 }
 
 .facet-checkbox>input[type=checkbox]:checked~.icon-checkmark__plus::after {
@@ -1068,6 +1070,8 @@ input.mobile-facets__checkbox {
   -webkit-transform: rotate(135deg);
   -ms-transform: rotate(135deg);
   transform: rotate(135deg);
+  opacity: 1;
+  transition: all .3s ease-in-out,-webkit-transform .3s ease-in-out;
 }
 
 .facets-box .facets-container .facet-checkbox .icon-checkmark {
@@ -1107,6 +1111,39 @@ input.mobile-facets__checkbox {
 
 .collection-filters .header__inline-menu--mobile {
   position: unset;
+}
+
+.facet-checkbox__background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;	
+  
+}
+
+.facet-checkbox__title {
+  z-index: 1;
+  margin: 0 !important;
+}
+
+.collection-filters .header__submenu .header__menu-item {
+  position: relative;
+}
+
+.facets-box .facets-container .facet-checkbox .icon-checkmark__plus {
+  z-index: 1;
+}
+
+.facet-checkbox {
+  position: unset;
+}
+
+.facet-checkbox>input[type=checkbox]:checked~.facet-checkbox__background {
+  color: var(--color-foreground);
+  background-color: var(--color-base-accent-2);
+  border-radius: 4px;
+  z-index: 0;
 }
 
 @media only screen and (max-width: 990px) {
