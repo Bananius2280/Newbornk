@@ -66,7 +66,7 @@
                     </div>
                     <ul class="facets__list list-unstyled header__submenu list-menu motion-reduce header-submenu__third--level" role="list">
                       {%- for value in filter.values -%}
-                        <li class="header__menu-item list-menu__item link link--text focus-inset caption-large">
+                        <li class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %}">
                           <label for="Filter-{{ filter.label | escape }}-{{ forloop.index }}" class="facet-checkbox{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %}">
                             <input type="checkbox"
                               name="{{ value.param_name }}"
@@ -75,7 +75,7 @@
                               {% if value.active %}checked{% endif %}
                               {% if value.count == 0 and value.active == false %}disabled{% endif %}
                             >
-                            {{ value.label | escape }} ({{ value.count }})
+                            {{ value.label | escape }} {% if filter.label != 'Бренди' %}({{ value.count }}){% endif %}
                             <div class="icon icon-checkmark icon-checkmark__plus"> </div>
                           </label>
                         </li>

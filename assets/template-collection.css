@@ -394,6 +394,7 @@ body.template-collection {
 
 .facet-checkbox--disabled {
   color: var(--color-foreground-40);
+  display: none;
 }
 
 .facets__price {
